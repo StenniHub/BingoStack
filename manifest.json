@@ -10,7 +10,7 @@
     "content_scripts": [
       {
         "matches": ["https://bingosync.com/room/*"],
-        "js": ["RNG.js", "BingoStack.js"]
+        "js": ["seedrandom.min.js", "BingoStack.js"]
       }
     ]
   }

@@ -3,11 +3,12 @@ const weaponCategories = ["Daggers","Straight Swords","Greatswords","Ultra Great
 
 function stackItUp() {
     console.log("Let's go stack it up!")
-    const numberGenerator = new RNG(parseInt(currentSeed));
+    // Have to load seedrandom.min.js before this is called, see manifest.json
+    Math.seedrandom(currentSeed);
 
     const tiles = document.getElementsByClassName("text-container");
     for (tile of tiles) {
-        const conditionIdx = numberGenerator.nextRange(0, weaponCategories.length);
+        const conditionIdx = Math.floor(Math.random() * weaponCategories.length);
         const condition = weaponCategories[conditionIdx];
         tile.textContent += " with " + condition;
     }
