@@ -1,4 +1,4 @@
-var boardHidden = true;
+var currentSeed = null;
 
 function stackItUp() {
     console.log("Let's go stack it up!")
@@ -8,30 +8,36 @@ function stackItUp() {
     }
 }
 
-function checkIfBoardIsHidden() {
-    const boardCover = document.getElementsByClassName("board-cover")[0];
+function checkIfSeedChanged() {
+    const theSeed = document.getElementById("the-seed");
+    const newSeed = theSeed.textContent.trim();
+    if (newSeed === "Hidden") return;
 
-    const boardHiddenBefore = boardHidden;
-    boardHidden = boardCover.style.display != 'none';
-
-    if (boardHidden != boardHiddenBefore) {
+    if (newSeed !== currentSeed) {
+        currentSeed = newSeed;
         stackItUp();
     }
 }
 
-setInterval(checkIfBoardIsHidden, 1000);
+setInterval(checkIfSeedChanged, 1000);
 
 // document.getElementById("stackButton").addEventListener("click", stackItUp);
 
+
+// FIXME: WHY IS NO WORK???
 /*
-MutationObserver(function(mutations) {
+const observer = new MutationObserver(function(mutations) {
     mutations.forEach(function(mutationRecord) {
-        console.log('style changed!');
+        console.log(mutationRecord);
     });
 });
-var target = document.getElementById('myId');
-observer.observe(target, {
-    attributes : true,
-    attributeFilter : ['style']
+
+const theSeed = document.getElementById("the-seed");
+console.log(theSeed.textContent);
+observer.observe(theSeed, {
+    attributes: true,
+    childList: true,
+    characterData: true,
+    subtree: true
 });
 */
