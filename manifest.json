@@ -1,0 +1,16 @@
+{
+    "manifest_version": 3,
+    "name": "BingoStack",
+    "description": "Let's go stack it up!",
+    "version": "1.0",
+    "action": {
+      "default_popup": "index.html",
+      "default_icon": "ssc_logo.png"
+    },
+    "content_scripts": [
+      {
+        "matches": ["https://bingosync.com/room/*"],
+        "js": ["BingoStack.js"]
+      }
+    ]
+  }
